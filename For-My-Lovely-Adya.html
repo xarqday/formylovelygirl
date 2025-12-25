@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untuk Adya Tersayang</title>
+    <style>
+        :root {
+            --pink-soft: #ffdde1;
+            --pink-bold: #ff9a9e;
+            --yellow-pastel: #fff9ae;
+            --blue-pastel: #a1c4fd;
+            --text-color: #555;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--pink-soft), var(--blue-pastel));
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+        }
+
+        /* Floating Bubbles Background */
+        .bubbles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            top: 0; left: 0;
+        }
+
+        /* Modal / Pop-up Styling */
+        .popup {
+            background: white;
+            padding: 30px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 400px;
+            width: 85%;
+            text-align: center;
+            position: absolute;
+            transform: scale(0);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 5px solid white;
+        }
+
+        .popup.active {
+            transform: scale(1);
+            position: relative;
+        }
+
+        .popup h2 {
+            color: var(--pink-bold);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .popup p {
+            color: var(--text-color);
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        .emoji {
+            font-size: 50px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        /* Button Styling */
+        button {
+            background: var(--pink-bold);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: transform 0.2s, background 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 154, 158, 0.4);
+        }
+
+        button:hover {
+            background: #ff7675;
+            transform: translateY(-3px);
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        /* Final Message Style */
+        #final-message {
+            color: #d63031;
+            font-weight: 800;
+            font-size: 2rem !important;
+            text-shadow: 2px 2px #ffdde1;
+        }
+
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+
+    <div class="bubbles">
+        </div>
+
+    <div id="start-card" class="popup active" style="border-color: var(--yellow-pastel);">
+        <span class="emoji">💌</span>
+        <h2>Haloo cayangku cintaku...</h2>
+        <p>Aku mau sampaiin sesuatu buat kamu. Boleh baca bentar ga sayang?</p>
+        <button onclick="nextStep(1)">Klik disini sayang</button>
+    </div>
+
+    <div id="p1" class="popup" style="border-color: #fab1a0;">
+        <span class="emoji">🥺</span>
+        <p>Sayang aku minta maaf… beneran minta maaf. Bukan cuma karena aku salah, tapi karena aku sadar aku udahh terlalu sering ngulang kesalahan yang sama. Kamu pasti capek banget sama aku, dan itu bikin kamu ngerasa ngga lagi jadi prioritas aku, dan itu pasti nyakitin banget.</p>
+        <button onclick="nextStep(2)">lanjut cayangku</button>
+    </div>
+
+    <div id="p2" class="popup" style="border-color: #74b9ff;">
+        <span class="emoji">😔</span>
+        <p>Aku minta maaf karena aku sering sibuk sama hal lain dan fokus ku selalu kebagi, sampai ga sadar malah ngorbanin waktu yang harusnya buat kamu malah kepake untuk hal yang gaada urgensinya. bikin kamu ngerasa ga penting, noo sayang itu semua karena aku egois dan kurang peka. Aku sering mikir kamu bakal ngerti, padahal yang kamu butuhin itu aku hadir, bukan sekadar pengertian.</p>
+        <button onclick="nextStep(3)">klik lagii</button>
+    </div>
+
+    <div id="p3" class="popup" style="border-color: #a29bfe;">
+        <span class="emoji">💔</span>
+        <p>Jujur aja, aku juga kesel sama diri aku sendiri. Aku sayang banget sama kamu, aku cinta banget sama kamu, tapi caraku nunjukinnya sering salah. mau nyobain inisiatif tapi malah berantakan. Janji berubah juga udah sering keluar dari mulut aku, tapi kenyataannya aku masih aja terjebak di kesalahan yang sama, dan aku ngerti kalo itu bikin kamu ragu sama aku.</p>
+        <button onclick="nextStep(4)">lagii lagiii</button>
+    </div>
+
+    <div id="p4" class="popup" style="border-color: #55efc4;">
+        <span class="emoji">🥺</span>
+        <p>Aku ngga nyari pembelaan. Aku cuma pengen kamu tau kalo rasa ini nyata. Kamu penting banget buat aku. Aku ngga pernah nganggep kamu sebagai pilihan kedua, ga pernah sama sekali. tapi aku terlalu sering gagal ngebuktiin itu lewat tindakan.</p>
+        <button onclick="nextStep(5)">klik lagi pwiss</button>
+    </div>
+
+    <div id="p5" class="popup" style="border-color: #ffeaa7;">
+        <span class="emoji">🫶🏻🥹❤️‍🩹</span>
+        <p>Aku ngga maksa kamu buat langsung maafin aku. Kalo kamu butuh waktu, aku ngerti. Aku cuma berharap kamu mau percaya kalo aku lagi belajar, lagi nyoba buat bener-bener berubah, bukan cuma ngomong doang. aku butuh waktu buat nunjukin ke kamu, emang ga sekejap mata langsung berubah, tolong sabar ya cintaku.</p>
+        <button onclick="nextStep(6)">terakhir deh sayang</button>
+    </div>
+
+    <div id="p6" class="popup" style="border-color: var(--pink-bold);">
+        <span class="emoji">🌹</span>
+        <p>Makasih karena masih mau baca sejauh ini. Makasih juga kamu udah sabar banget ngadepin aku, ngertiin aku Dan sekali lagi… aku minta maaf. Aku cinta banget sama kamu.</p>
+        <button onclick="showFinal()">click here sweetheart</button>
+    </div>
+
+    <div id="p-final" class="popup" style="background: #fff0f3;">
+        <span class="emoji">💖</span>
+        <p id="final-message">I SWEAR TO GOD I DO FUCKING LOVE YOU</p>
+        <p>-ur love AR. 💗♾️</p>
+    </div>
+
+    <script>
+        function nextStep(step) {
+            // Sembunyikan semua popup
+            const popups = document.querySelectorAll('.popup');
+            popups.forEach(p => {
+                p.classList.remove('active');
+                setTimeout(() => { p.classList.add('hidden'); }, 300);
+            });
+
+            // Tampilkan popup yang dituju
+            setTimeout(() => {
+                let nextId = '';
+                if(step === 1) nextId = 'p1';
+                else if(step === 2) nextId = 'p2';
+                else if(step === 3) nextId = 'p3';
+                else if(step === 4) nextId = 'p4';
+                else if(step === 5) nextId = 'p5';
+                else if(step === 6) nextId = 'p6';
+
+                const nextPopup = document.getElementById(nextId);
+                nextPopup.classList.remove('hidden');
+                setTimeout(() => { nextPopup.classList.add('active'); }, 50);
+            }, 400);
+        }
+
+        function showFinal() {
+            const current = document.getElementById('p6');
+            current.classList.remove('active');
+            setTimeout(() => {
+                current.classList.add('hidden');
+                const final = document.getElementById('p-final');
+                final.classList.remove('hidden');
+                setTimeout(() => { final.classList.add('active'); }, 50);
+                startConfetti();
+            }, 400);
+        }
+
+        // Sederhana: Efek salju/hati di background
+        function createBubble() {
+            const bubble = document.createElement('div');
+            bubble.innerHTML = '🌸';
+            bubble.style.position = 'absolute';
+            bubble.style.left = Math.random() * 100 + 'vw';
+            bubble.style.top = '110vh';
+            bubble.style.fontSize = Math.random() * 20 + 10 + 'px';
+            bubble.style.opacity = Math.random();
+            bubble.style.transition = 'transform 5s linear';
+            document.querySelector('.bubbles').appendChild(bubble);
+
+            setTimeout(() => {
+                bubble.style.transform = `translateY(-120vh) rotate(${Math.random() * 360}deg)`;
+            }, 100);
+
+            setTimeout(() => {
+                bubble.remove();
+            }, 6000);
+        }
+
+        setInterval(createBubble, 500);
+    </script>
+</body>
+</html>
